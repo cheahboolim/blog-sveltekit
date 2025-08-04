@@ -6,14 +6,14 @@ export const load: PageLoad = ({ params }) => {
   const pageNum = parseInt(params.page);
   const totalWaifus = waifuData.length;
 
-  const waifuIndex = pageNum - 1;
+  const waifuIndex = totalWaifus - pageNum;
 
   if (waifuIndex < 0 || waifuIndex >= totalWaifus) {
     throw new Error('Invalid waifu page');
   }
 
   const waifu = waifuData[waifuIndex];
-  const displayRank = waifu.id; // or just pageNum since id === index + 1
+  const displayRank = pageNum; // Displayed as-is to count up: 1 = #50, 50 = #1
 
   return {
     waifu,
