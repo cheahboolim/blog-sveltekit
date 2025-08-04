@@ -1,22 +1,25 @@
-<!-- src/routes/waifu/[page]/+page.svelte -->
 <script>
-  import ExoClickAd from '$lib/components/ui/Ads/ExoClickAd.svelte';
-
   export let data;
-  
+
   $: ({ waifu, pageNum, totalWaifus, displayRank } = data);
 </script>
 
 <svelte:head>
   <title>Waifu #{displayRank} - {waifu.name} | SUSMANGA.COM</title>
   <meta name="description" content="Discover {waifu.name} - Ranked #{displayRank} in our top {totalWaifus} waifu collection" />
+  <meta property="og:title" content="Waifu #{displayRank} - {waifu.name} | SUSMANGA.COM" />
+  <meta property="og:description" content="Discover {waifu.name} ranked #{displayRank} in our waifu list" />
+  <meta property="og:image" content="{waifu.image}" />
+  <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;600;700&display=swap" rel="stylesheet" />
+  <style>
+    html { font-family: 'Poppins', sans-serif; }
+  </style>
 </svelte:head>
 
-<div class="min-h-screen flex flex-col items-center justify-center p-4 md:p-8 w-full max-w-4xl mx-auto">
-  <!-- Main Waifu Card -->
+<div class="min-h-screen flex flex-col items-center justify-center px-4 md:px-8 py-8 w-full max-w-4xl mx-auto">
   <div class="w-full max-w-2xl bg-gradient-to-br from-gray-900 to-black border border-pink-500/30 rounded-2xl shadow-2xl overflow-hidden mb-8">
-    <!-- Header with ranking -->
-    <div class="bg-gradient-to-r from-pink-600 to-pink-500 p-6 text-center">
+    <!-- Header -->
+    <div class="bg-gradient-to-r from-[#FF4D8D] to-[#FF73AC] p-6 text-center shadow-inner">
       <div class="flex items-center justify-center space-x-4">
         <div class="bg-white/20 rounded-full px-4 py-2">
           <span class="text-white font-bold text-lg">#{displayRank}</span>
@@ -28,24 +31,25 @@
       </div>
     </div>
 
-    <!-- Main content -->
+    <!-- Main Content -->
     <div class="p-8">
-      <!-- Waifu image -->
+      <!-- Waifu Image -->
       <div class="flex justify-center mb-6">
-        <div class="relative group">
-          <img 
-            src={waifu.image} 
+        <div class="relative group w-80 h-80 md:w-96 md:h-96">
+          <img
+            src={waifu.image}
             alt={waifu.name}
-            class="w-80 h-80 md:w-96 md:h-96 object-cover rounded-xl shadow-lg transition-transform duration-300 group-hover:scale-105"
+            class="w-full h-full object-cover rounded-xl shadow-lg transition-transform duration-300 group-hover:scale-105"
             loading="lazy"
           />
-          <div class="absolute inset-0 bg-gradient-to-t from-black/20 to-transparent rounded-xl opacity-0 group-hover:opacity-100 transition-opacity duration-300"></div>
+          <div class="absolute inset-0 bg-black/30 rounded-xl opacity-0 group-hover:opacity-100 transition-opacity duration-300"></div>
+          <div class="absolute -inset-1 rounded-xl border-4 border-pink-500/40 blur-sm opacity-0 group-hover:opacity-100 transition-opacity duration-300"></div>
         </div>
       </div>
 
-      <!-- Waifu name and details -->
+      <!-- Name & Info -->
       <div class="text-center mb-8">
-        <h2 class="text-2xl md:text-3xl font-bold text-white mb-3 leading-tight">{waifu.name}</h2>
+        <h2 class="text-3xl font-bold text-white mb-3 leading-tight">{waifu.name}</h2>
         <div class="flex items-center justify-center space-x-6 text-gray-400">
           <div class="flex items-center space-x-2">
             <svg class="w-5 h-5" fill="currentColor" viewBox="0 0 20 20">
@@ -62,12 +66,12 @@
         </div>
       </div>
 
-      <!-- Navigation buttons -->
-      <div class="flex justify-between items-center">
+      <!-- Navigation -->
+      <div class="flex flex-col sm:flex-row gap-4 items-center">
         {#if displayRank < totalWaifus}
           <a 
             href="/waifu/{pageNum + 1}" 
-            class="group flex items-center space-x-2 bg-gradient-to-r from-pink-600 to-pink-500 hover:from-pink-700 hover:to-pink-600 text-white px-6 py-3 rounded-lg font-semibold transition-all duration-200 shadow-lg hover:shadow-xl transform hover:-translate-y-1"
+            class="group w-full sm:w-48 flex items-center justify-center space-x-3 bg-white hover:bg-gray-100 text-black px-8 py-4 rounded-xl font-semibold transition-all duration-200 shadow-lg hover:shadow-xl transform hover:-translate-y-1"
           >
             <svg class="w-5 h-5 transition-transform group-hover:-translate-x-1" fill="currentColor" viewBox="0 0 20 20">
               <path fill-rule="evenodd" d="M12.707 5.293a1 1 0 010 1.414L9.414 10l3.293 3.293a1 1 0 01-1.414 1.414l-4-4a1 1 0 010-1.414l4-4a1 1 0 011.414 0z" clip-rule="evenodd" />
@@ -75,19 +79,18 @@
             <span>Previous Rank</span>
           </a>
         {:else}
-          <div class="w-32"></div>
+          <div class="w-full sm:w-48"></div>
         {/if}
 
-        <!-- Rank indicator -->
-        <div class="text-center">
+        <div class="text-center flex-shrink-0 px-4">
           <div class="text-gray-400 text-sm mb-1">Current Ranking</div>
-          <div class="text-pink-500 font-bold text-xl">#{displayRank}</div>
+          <div class="text-pink-500 font-bold text-2xl animate-pulse">#{displayRank}</div>
         </div>
 
         {#if displayRank > 1}
           <a 
             href="/waifu/{pageNum - 1}" 
-            class="group flex items-center space-x-2 bg-gradient-to-r from-pink-600 to-pink-500 hover:from-pink-700 hover:to-pink-600 text-white px-6 py-3 rounded-lg font-semibold transition-all duration-200 shadow-lg hover:shadow-xl transform hover:-translate-y-1"
+            class="group w-full sm:w-48 flex items-center justify-center space-x-3 bg-gradient-to-r from-pink-600 to-pink-500 hover:from-pink-700 hover:to-pink-600 text-white px-8 py-4 rounded-xl font-semibold transition-all duration-200 shadow-lg hover:shadow-xl transform hover:-translate-y-1"
           >
             <span>Next Rank</span>
             <svg class="w-5 h-5 transition-transform group-hover:translate-x-1" fill="currentColor" viewBox="0 0 20 20">
@@ -95,12 +98,12 @@
             </svg>
           </a>
         {:else}
-          <div class="w-32"></div>
+          <div class="w-full sm:w-48"></div>
         {/if}
       </div>
     </div>
 
-    <!-- Footer with additional info -->
+    <!-- Footer -->
     <div class="bg-gray-800/50 px-8 py-4 border-t border-gray-700">
       <div class="flex justify-between items-center text-sm text-gray-400">
         <span>SUSMANGA.COM Waifu Rankings</span>
@@ -109,8 +112,7 @@
     </div>
   </div>
 
-  <!-- Ad Section -->
-  <div class="w-full max-w-xl">
-    <ExoClickAd />
-  </div>
+  <!-- Ad Section Placeholder -->
+  <!-- <AdComponentHere /> -->
+
 </div>
