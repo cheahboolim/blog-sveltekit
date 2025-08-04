@@ -1,12 +1,37 @@
-<script lang="ts">
-	import '../app.css';
-	import favicon from '$lib/assets/favicon.svg';
-
-	let { children } = $props();
+<script>
+  import '../app.css';
 </script>
 
-<svelte:head>
-	<link rel="icon" href={favicon} />
-</svelte:head>
+<div class="min-h-screen bg-black text-white flex flex-col">
+  <!-- Header -->
+  <header class="bg-black border-b border-gray-800">
+    <div class="container mx-auto px-4 py-4">
+      <div class="flex justify-center">
+        <a href="/" class="text-2xl font-bold text-white hover:text-gray-300 transition-colors duration-200">
+          SUSMANGA.COM
+        </a>
+      </div>
+    </div>
+  </header>
 
-{@render children?.()}
+  <!-- Main Content -->
+  <main class="flex-1 container mx-auto px-4 py-8">
+    <slot />
+  </main>
+
+  <!-- Footer -->
+  <footer class="bg-black border-t border-gray-800 mt-auto">
+    <div class="container mx-auto px-4 py-6">
+      <div class="flex justify-center">
+        <a 
+          href="https://susmanga.com" 
+          class="text-gray-400 hover:text-white transition-colors duration-200"
+          target="_blank"
+          rel="noopener noreferrer"
+        >
+          susmanga.com
+        </a>
+      </div>
+    </div>
+  </footer>
+</div>
