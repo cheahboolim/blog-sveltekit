@@ -1,4 +1,3 @@
-<!-- src/lib/components/ui/Ads/HighPerformanceAd.svelte -->
 <script>
   import { onMount } from 'svelte';
   import { browser } from '$app/environment';
@@ -9,47 +8,45 @@
   onMount(() => {
     if (!browser || loaded || !adRef) return;
 
-    // Create a wrapper div that will contain both scripts and serve as ad container
     const adContainer = adRef;
-    
-    // First script: Set the options exactly as in the original
+
+    // Create <script> to define atOptions
     const optionsScript = document.createElement('script');
     optionsScript.type = 'text/javascript';
     optionsScript.text = `
       atOptions = {
-        'key' : '859ce865eafad0dfd961277e055d4058',
+        'key' : '6940c8557887317467a6a079798a9de8',
         'format' : 'iframe',
         'height' : 250,
         'width' : 300,
         'params' : {}
       };
     `;
-    
-    // Second script: Load the invoke script exactly as in the original
+
+    // Create <script> to load invoke.js
     const invokeScript = document.createElement('script');
     invokeScript.type = 'text/javascript';
-    invokeScript.src = '//www.highperformanceformat.com/859ce865eafad0dfd961277e055d4058/invoke.js';
-    
-    // Append both scripts to our container
+    invokeScript.src = '//www.highperformanceformat.com/6940c8557887317467a6a079798a9de8/invoke.js';
+
+    // Inject scripts into ad container
     adContainer.appendChild(optionsScript);
     adContainer.appendChild(invokeScript);
-    
+
     loaded = true;
 
+    // Cleanup on destroy
     return () => {
-      // Clean up - remove scripts from container
-      if (adRef) {
-        adRef.innerHTML = '';
-      }
+      if (adRef) adRef.innerHTML = '';
       loaded = false;
     };
   });
 </script>
 
+<!-- Ad container -->
 <div 
   bind:this={adRef}
   style="width: 300px; height: 250px; display: block; margin: 0 auto; min-height: 250px;"
   class="ad-container"
 >
-  <!-- Scripts and ad content will be inserted here -->
+  <!-- Ad script will inject iframe here -->
 </div>
