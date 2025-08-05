@@ -2,6 +2,8 @@
 <script>
   export let data;
   $: ({ car, pageNum, totalCars, displayRank } = data);
+    import ExoClickAd from '$lib/components/ui/Ads/ExoClickAd.svelte';
+  import HighPerformanceAd from '$lib/components/ui/Ads/HighPerformanceAd.svelte';
 </script>
 
 <svelte:head>
@@ -86,5 +88,13 @@
         <a href="/" class="hover:text-green-400 transition-colors">← Back to Home</a>
       </div>
     </div>
+      <!-- HighPerformanceAd Component -->
+  <div class="w-[300px] h-[300px] flex items-center justify-center mx-auto mt-8">
+    <HighPerformanceAd />
+  </div>
+    <!-- ExoClickAd Component -->
+  <div class="mt-8 w-full max-w-xl">
+    <ExoClickAd />
+  </div>
   </div>
 </div>
