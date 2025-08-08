@@ -1,5 +1,6 @@
 
 <script>
+	import Exobanner from '$lib/components/ui/Ads/Exobanner.svelte';
   export let data;
   $: ({ car, pageNum, totalCars, displayRank } = data);
     import ExoClickAd from '$lib/components/ui/Ads/ExoClickAd.svelte';
@@ -90,7 +91,7 @@
     </div>
       <!-- HighPerformanceAd Component -->
   <div class="w-[300px] h-[300px] flex items-center justify-center mx-auto mt-8">
-    <HighPerformanceAd />
+    <Exobanner />
   </div>
     <!-- ExoClickAd Component -->
   <div class="mt-8 w-full max-w-xl">
