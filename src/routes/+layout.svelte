@@ -16,10 +16,6 @@
     </div>
   </header>
 
-  <!-- Video Ads -->
-  <ExoVideoSlider />
-  <OutstreamVideo />
-
   <!-- Main Content -->
   <main class="flex-1 container mx-auto px-4 py-8">
     <slot />
@@ -39,5 +35,8 @@
         </a>
       </div>
     </div>
+      <!-- Video Ads -->
+  <ExoVideoSlider />
+  <OutstreamVideo />
   </footer>
 </div>
