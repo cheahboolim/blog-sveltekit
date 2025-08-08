@@ -1,9 +1,12 @@
 <script>
+	import Exobanner from '$lib/components/ui/Ads/Exobanner.svelte';
+
   export let data;
   $: ({ coin, pageNum, totalCoins, displayRank, pageTitle } = data);
 
-  import ExoClickAd from '$lib/components/ui/Ads/ExoClickAd.svelte';
-  import HighPerformanceAd from '$lib/components/ui/Ads/HighPerformanceAd.svelte';
+	import ExoVideoSlider from '$lib/components/ui/Ads/ExoVideoSlider.svelte';
+	import OutstreamVideo from '$lib/components/ui/Ads/OutstreamVideo.svelte';
+
 
   const year = new Date().getFullYear();
   const canonicalUrl = `https://gossip.susmanga.com/meme-trading-under-1cent/${pageNum}`;
@@ -126,11 +129,12 @@
     </div>
 
     <div class="w-[300px] h-[300px] flex items-center justify-center mx-auto mt-8">
-      <HighPerformanceAd />
+      <Exobanner />
     </div>
 
     <div class="mt-8 w-full max-w-xl">
-      <ExoClickAd />
+      <ExoVideoSlider />
+      <OutstreamVideo />
     </div>
   </div>
 </div>
