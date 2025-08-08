@@ -1,4 +1,5 @@
 <script>
+	import Exobanner from '$lib/components/ui/Ads/Exobanner.svelte';
   import ExoClickAd from '$lib/components/ui/Ads/ExoClickAd.svelte';
   import HighPerformanceAd from '$lib/components/ui/Ads/HighPerformanceAd.svelte';
 
@@ -62,12 +63,7 @@
 
   <!-- High Performance Ad -->
   <div class="w-[300px] h-[300px] flex items-center justify-center mx-auto mt-10">
-    <HighPerformanceAd />
-  </div>
-
-  <!-- ExoClick Ad -->
-  <div class="mt-10 w-full max-w-xl px-4 mx-auto">
-    <ExoClickAd />
+    <Exobanner />
   </div>
 
   <!-- Featured Manga Collections -->
