@@ -1,5 +1,6 @@
 <script>
 	import Exobanner from '$lib/components/ui/Ads/Exobanner.svelte';
+	import HighPerformanceAd from '$lib/components/ui/Ads/HighPerformanceAd.svelte';
 
   export let data;
   $: ({ coin, pageNum, totalCoins, displayRank, pageTitle } = data);
@@ -125,7 +126,7 @@
     </div>
 
     <div class="w-[300px] h-[300px] flex items-center justify-center mx-auto mt-8">
-      <Exobanner />
+      <HighPerformanceAd />
     </div>
 
   </div>

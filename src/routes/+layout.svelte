@@ -35,8 +35,9 @@
         </a>
       </div>
     </div>
-      <!-- Video Ads -->
+      <!-- Video Ads 
   <ExoVideoSlider />
   <OutstreamVideo />
+  -->
   </footer>
 </div>
