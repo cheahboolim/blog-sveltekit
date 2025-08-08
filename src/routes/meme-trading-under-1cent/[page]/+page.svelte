@@ -4,10 +4,6 @@
   export let data;
   $: ({ coin, pageNum, totalCoins, displayRank, pageTitle } = data);
 
-	import ExoVideoSlider from '$lib/components/ui/Ads/ExoVideoSlider.svelte';
-	import OutstreamVideo from '$lib/components/ui/Ads/OutstreamVideo.svelte';
-
-
   const year = new Date().getFullYear();
   const canonicalUrl = `https://gossip.susmanga.com/meme-trading-under-1cent/${pageNum}`;
 </script>
@@ -132,9 +128,5 @@
       <Exobanner />
     </div>
 
-    <div class="mt-8 w-full max-w-xl">
-      <ExoVideoSlider />
-      <OutstreamVideo />
-    </div>
   </div>
 </div>

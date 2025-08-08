@@ -1,7 +1,5 @@
 <script>
   import '../app.css';
-  import ExoVideoSlider from '$lib/components/ui/Ads/ExoVideoSlider.svelte';
-  import OutstreamVideo from '$lib/components/ui/Ads/OutstreamVideo.svelte';
 </script>
 
 <div class="min-h-screen bg-black text-white flex flex-col">
@@ -15,10 +13,6 @@
       </div>
     </div>
   </header>
-
-  <!-- Video Ads -->
-  <ExoVideoSlider />
-  <OutstreamVideo />
 
   <!-- Main Content -->
   <main class="flex-1 container mx-auto px-4 py-8">
