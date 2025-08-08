@@ -1,12 +1,23 @@
 <script>
-	import Exobanner from '$lib/components/ui/Ads/Exobanner.svelte';
-	import HighPerformanceAd from '$lib/components/ui/Ads/HighPerformanceAd.svelte';
+  import Exobanner from '$lib/components/ui/Ads/Exobanner.svelte';
+  import HighPerformanceAd from '$lib/components/ui/Ads/HighPerformanceAd.svelte';
 
   export let data;
   $: ({ coin, pageNum, totalCoins, displayRank, pageTitle } = data);
 
   const year = new Date().getFullYear();
   const canonicalUrl = `https://gossip.susmanga.com/meme-trading-under-1cent/${pageNum}`;
+
+  // GA4 Conversion Tracking for CTA click
+  function trackCTA() {
+    gtag('event', 'conversion', {
+      send_to: 'G-KT8S50J7ZK', // Replace with your GA4 Measurement ID
+      currency: 'USD',
+      value: 0.01,
+      event_category: 'engagement',
+      event_label: 'Random Manga CTA Click'
+    });
+  }
 </script>
 
 <svelte:head>
@@ -48,6 +59,8 @@
 
 <div class="min-h-screen flex flex-col items-center justify-center px-4 md:px-8 py-8 w-full max-w-4xl mx-auto">
   <div class="w-full max-w-2xl bg-gradient-to-br from-gray-900 to-black border border-pink-400/30 rounded-2xl shadow-2xl overflow-hidden mb-8">
+    
+    <!-- Header -->
     <div class="bg-gradient-to-r from-pink-400 to-yellow-300 p-6 text-center shadow-inner">
       <div class="flex items-center justify-center space-x-4">
         <div class="bg-white/20 rounded-full px-4 py-2">
@@ -60,6 +73,7 @@
       </div>
     </div>
 
+    <!-- Coin Image -->
     <div class="p-8">
       <div class="flex justify-center mb-6">
         <div class="relative group w-80 h-80 md:w-96 md:h-96">
@@ -72,6 +86,7 @@
         </div>
       </div>
 
+      <!-- Coin Info -->
       <div class="text-center mb-8">
         <h2 class="text-3xl font-bold text-white mb-3 leading-tight">{coin.name}</h2>
         <p class="text-gray-400 text-md mb-2">Price: <span class="text-green-300 font-semibold">{coin.price}</span></p>
@@ -79,6 +94,7 @@
         <p class="text-gray-300 text-base leading-relaxed">{coin.description}</p>
       </div>
 
+      <!-- Social Share -->
       <div class="flex justify-center mt-6 space-x-4">
         <a href={`https://twitter.com/intent/tweet?text=${encodeURIComponent(`Check out Meme Coin #${displayRank} - ${coin.name} 🚀 ${canonicalUrl}`)}`} target="_blank" rel="noopener noreferrer" class="bg-blue-500 hover:bg-blue-600 text-white px-4 py-2 rounded">
           Tweet
@@ -88,36 +104,50 @@
         </a>
       </div>
 
-      <div class="flex flex-col sm:flex-row gap-4 items-center mt-8">
+      <!-- CTA -->
+      <div class="flex justify-center mt-8">
+        <a
+          href="https://susmanga.com/random"
+          target="_blank"
+          rel="noopener noreferrer"
+          class="bg-gradient-to-r from-green-500 to-green-500 hover:from-blue-600 hover:to-blue-600 text-white px-6 py-3 rounded-xl font-semibold shadow-lg hover:shadow-xl transition-all duration-200 transform hover:-translate-y-1"
+          on:click|preventDefault={() => {
+            trackCTA();
+            window.open('https://susmanga.com/random', '_blank', 'noopener,noreferrer');
+          }}
+        >
+          BUY {coin.name} COIN HERE
+        </a>
+      </div>
+
+      <!-- Navigation -->
+      <div class="flex justify-center items-center mt-8 gap-6">
         {#if pageNum < totalCoins}
-          <a href="/meme-trading-under-1cent/{pageNum + 1}" class="group w-full sm:w-48 flex items-center justify-center space-x-3 bg-white hover:bg-gray-100 text-black px-8 py-4 rounded-xl font-semibold transition-all duration-200 shadow-lg hover:shadow-xl transform hover:-translate-y-1">
+          <a href="/meme-trading-under-1cent/{pageNum + 1}" class="group w-48 flex items-center justify-center space-x-3 bg-white hover:bg-gray-100 text-black px-8 py-4 rounded-xl font-semibold transition-all duration-200 shadow-lg hover:shadow-xl transform hover:-translate-y-1">
             <svg class="w-5 h-5 transition-transform group-hover:-translate-x-1" fill="currentColor" viewBox="0 0 20 20">
               <path fill-rule="evenodd" d="M12.707 5.293a1 1 0 010 1.414L9.414 10l3.293 3.293a1 1 0 01-1.414 1.414l-4-4a1 1 0 010-1.414l4-4a1 1 0 011.414 0z" clip-rule="evenodd" />
             </svg>
             <span>Previous Coin</span>
           </a>
-        {:else}
-          <div class="w-full sm:w-48"></div>
         {/if}
 
-        <div class="text-center flex-shrink-0 px-4">
+        <div class="text-center">
           <div class="text-gray-400 text-sm mb-1">Current Rank</div>
           <div class="text-pink-400 font-bold text-2xl animate-pulse">#{displayRank}</div>
         </div>
 
         {#if pageNum > 1}
-          <a href="/meme-trading-under-1cent/{pageNum - 1}" class="group w-full sm:w-48 flex items-center justify-center space-x-3 bg-gradient-to-r from-pink-600 to-rose-500 hover:from-pink-700 hover:to-rose-600 text-white px-8 py-4 rounded-xl font-semibold transition-all duration-200 shadow-lg hover:shadow-xl transform hover:-translate-y-1">
+          <a href="/meme-trading-under-1cent/{pageNum - 1}" class="group w-48 flex items-center justify-center space-x-3 bg-gradient-to-r from-pink-600 to-rose-500 hover:from-pink-700 hover:to-rose-600 text-white px-8 py-4 rounded-xl font-semibold transition-all duration-200 shadow-lg hover:shadow-xl transform hover:-translate-y-1">
             <span>Next Coin</span>
             <svg class="w-5 h-5 transition-transform group-hover:translate-x-1" fill="currentColor" viewBox="0 0 20 20">
               <path fill-rule="evenodd" d="M7.293 14.707a1 1 0 010-1.414L10.586 10 7.293 6.707a1 1 0 011.414-1.414l4 4a1 1 0 010 1.414l-4 4a1 1 0 01-1.414 0z" clip-rule="evenodd" />
             </svg>
           </a>
-        {:else}
-          <div class="w-full sm:w-48"></div>
         {/if}
       </div>
     </div>
 
+    <!-- Footer & Ads -->
     <div class="bg-gray-800/50 px-8 py-4 border-t border-gray-700">
       <div class="flex justify-between items-center text-sm text-gray-400">
         <span>SUSMANGA.COM Meme Coin Rankings</span>
@@ -128,6 +158,5 @@
     <div class="w-[300px] h-[300px] flex items-center justify-center mx-auto mt-8">
       <HighPerformanceAd />
     </div>
-
   </div>
 </div>

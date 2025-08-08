@@ -1,10 +1,11 @@
-
 <script>
 	import Exobanner from '$lib/components/ui/Ads/Exobanner.svelte';
-  export let data;
-  $: ({ car, pageNum, totalCars, displayRank } = data);
-    import ExoClickAd from '$lib/components/ui/Ads/ExoClickAd.svelte';
-  import HighPerformanceAd from '$lib/components/ui/Ads/HighPerformanceAd.svelte';
+	import ExoClickAd from '$lib/components/ui/Ads/ExoClickAd.svelte';
+	import HighPerformanceAd from '$lib/components/ui/Ads/HighPerformanceAd.svelte';
+	import AAdssmall from '$lib/components/ui/Ads/AAdssmall.svelte';
+
+	export let data;
+	$: ({ car, pageNum, totalCars, displayRank } = data);
 </script>
 
 <svelte:head>
@@ -16,6 +17,12 @@
 </svelte:head>
 
 <div class="min-h-screen flex flex-col items-center justify-center px-4 md:px-8 py-8 w-full max-w-4xl mx-auto">
+
+  <!-- Small A-Ads banner above the card -->
+  <div class="mb-4">
+    <AAdssmall />
+  </div>
+
   <div class="w-full max-w-2xl bg-gradient-to-br from-gray-900 to-black border border-green-400/30 rounded-2xl shadow-2xl overflow-hidden mb-8">
     <div class="bg-gradient-to-r from-[#00FFC2] to-[#00FFD1] p-6 text-center shadow-inner">
       <div class="flex items-center justify-center space-x-4">
@@ -89,13 +96,15 @@
         <a href="/" class="hover:text-green-400 transition-colors">← Back to Home</a>
       </div>
     </div>
-      <!-- HighPerformanceAd Component -->
-  <div class="w-[300px] h-[300px] flex items-center justify-center mx-auto mt-8">
-    <Exobanner />
-  </div>
+
+    <!-- HighPerformanceAd Component -->
+    <div class="w-[300px] h-[300px] flex items-center justify-center mx-auto mt-8">
+      <Exobanner />
+    </div>
+
     <!-- ExoClickAd Component -->
-  <div class="mt-8 w-full max-w-xl">
-    <ExoClickAd />
-  </div>
+    <div class="mt-8 w-full max-w-xl">
+      <ExoClickAd />
+    </div>
   </div>
 </div>
