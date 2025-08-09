@@ -2,6 +2,7 @@
   import '../app.css';
   import ExoVideoSlider from '$lib/components/ui/Ads/ExoVideoSlider.svelte';
   import OutstreamVideo from '$lib/components/ui/Ads/OutstreamVideo.svelte';
+	import AAdssmall from '$lib/components/ui/Ads/AAdssmall.svelte';
 </script>
 
 <div class="min-h-screen bg-black text-white flex flex-col">
@@ -16,8 +17,15 @@
     </div>
   </header>
 
+    <!-- Aads -->
+<main class="flex-1 container mx-auto px-4 py-2">
+  <div class="flex justify-center">
+    <AAdssmall />
+  </div>
+</main>
+
   <!-- Main Content -->
-  <main class="flex-1 container mx-auto px-4 py-8">
+  <main class="flex-1 container mx-auto px-4 py-2">
     <slot />
   </main>
 
