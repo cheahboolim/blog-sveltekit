@@ -8,15 +8,15 @@
   const year = new Date().getFullYear();
   const canonicalUrl = `https://gossip.susmanga.com/meme-trading-under-1cent/${pageNum}`;
 
-  // GA4 Conversion Tracking for CTA click
-  function trackCTA() {
-    gtag('event', 'conversion', {
-      send_to: 'G-KT8S50J7ZK', // Replace with your GA4 Measurement ID
-      currency: 'USD',
-      value: 0.01,
-      event_category: 'engagement',
-      event_label: 'Random Manga CTA Click'
-    });
+  // CTA click handler — open tab first, then track
+  function handleCTA() {
+    window.open('https://crypto.com/', '_blank', 'noopener,noreferrer');
+    if (typeof gtag === 'function') {
+      gtag('event', 'crypto_cta_click', {
+        currency: 'USD',
+        value: 0.69
+      });
+    }
   }
 </script>
 
@@ -106,18 +106,13 @@
 
       <!-- CTA -->
       <div class="flex justify-center mt-8">
-        <a
-          href="https://susmanga.com/random"
-          target="_blank"
-          rel="noopener noreferrer"
+        <button
+          type="button"
           class="bg-gradient-to-r from-green-500 to-green-500 hover:from-blue-600 hover:to-blue-600 text-white px-6 py-3 rounded-xl font-semibold shadow-lg hover:shadow-xl transition-all duration-200 transform hover:-translate-y-1"
-          on:click|preventDefault={() => {
-            trackCTA();
-            window.open('https://susmanga.com/random', '_blank', 'noopener,noreferrer');
-          }}
+          on:click={handleCTA}
         >
           BUY {coin.name} COIN HERE
-        </a>
+        </button>
       </div>
 
       <!-- Navigation -->
