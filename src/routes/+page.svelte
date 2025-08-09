@@ -1,4 +1,5 @@
 <script>
+	import Aadssquare from '$lib/components/ui/Ads/Aadssquare.svelte';
 	import Exobanner from '$lib/components/ui/Ads/Exobanner.svelte';
   import ExoClickAd from '$lib/components/ui/Ads/ExoClickAd.svelte';
   import HighPerformanceAd from '$lib/components/ui/Ads/HighPerformanceAd.svelte';
@@ -62,8 +63,8 @@
   </div>
 
   <!-- High Performance Ad -->
-  <div class="w-[300px] h-[300px] flex items-center justify-center mx-auto mt-10">
-    <Exobanner />
+  <div class="w-[300px] h-[300px] flex items-center justify-center mx-auto mt-2">
+    <Aadssquare />
   </div>
 
   <!-- Featured Manga Collections -->
