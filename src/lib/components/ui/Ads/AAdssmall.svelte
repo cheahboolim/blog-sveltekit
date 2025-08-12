@@ -10,7 +10,7 @@
   id="frame"
   style={`width:${width}; margin:auto; z-index:99998; height:auto;`}
 >
-  <iframe
+  <iframe title="Ad Frame"
     data-aa={dataAa}
     src={src}
     style={`border:0; padding:0; width:${width}; height:${height}; overflow:hidden; display:block; margin:auto;`}

@@ -17,13 +17,6 @@
     </div>
   </header>
 
-    <!-- Aads -->
-<main class="flex-1 container mx-auto px-4 py-2">
-  <div class="flex justify-center">
-    <AAdssmall />
-  </div>
-</main>
-
   <!-- Main Content -->
   <main class="flex-1 container mx-auto px-4 py-2">
     <slot />
