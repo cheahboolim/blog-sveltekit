@@ -89,7 +89,7 @@
   <div class="max-w-6xl mx-auto">
     <header class="mb-8 text-center">
       <h1 class="text-3xl sm:text-4xl font-extrabold">🔥 Top 7 Meme Coins - World's Largest Voting Poll</h1>
-      <p class="text-sm text-slate-400 mt-2">Voted by millions of <a href="https://susmanga.com" class="text-blue-400 hover:underline">SUSMANGA.COM</a> readers daily. Collectively let's vote the coins we love to the top.</p>
+      <p class="text-sm text-slate-400 mt-2">Voted by millions of <a href="https://susmanga.com" target="_blank" class="text-blue-400 hover:underline">SUSMANGA.COM</a> readers daily. Collectively let's vote the coins we love to the top.</p>
     </header>
 
     {#if coins.length === 0}
@@ -201,10 +201,10 @@
         Each Bitcoin was worth about <strong>$0.0041</strong> back then—so around $41 total. Today, those same coins would be worth over <strong>$1.1 billion</strong>! 😲
       </p>
       <p class="mb-3">
-        Here at <a href="https://susmanga.com" class="text-blue-400 hover:underline">SusManga.com</a>, we just poll the most popular cheap coins. While you’re enjoying your manga, you can see which coins our community loves—and maybe one day your small investment could grow big.
+        Here at <a href="https://susmanga.com"  target="_blank" class="text-blue-400 hover:underline">SusManga.com</a>, we just poll the most popular cheap coins. While you’re enjoying your manga, you can see which coins our community loves—and maybe one day your small investment could grow big.
       </p>
       <p>
-        Think there’s a promising coin under $0.01 that should be on this list? Let us know over at <a href="https://susmanga.com" class="text-blue-400 hover:underline">SusManga.com</a>!
+        Think there’s a promising coin under $0.01 that should be on this list? Let us know over at <a href="https://susmanga.com"  target="_blank" class="text-blue-400 hover:underline">SusManga.com</a>!
       </p>
     </section>
   </div>
