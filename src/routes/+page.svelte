@@ -1,8 +1,6 @@
 <script>
 	import Aadssquare from '$lib/components/ui/Ads/Aadssquare.svelte';
-	import Exobanner from '$lib/components/ui/Ads/Exobanner.svelte';
-  import ExoClickAd from '$lib/components/ui/Ads/ExoClickAd.svelte';
-  import HighPerformanceAd from '$lib/components/ui/Ads/HighPerformanceAd.svelte';
+	import Coinpoll from '$lib/components/ui/Ads/coinpoll.svelte';
 
   const comicCards = [
     {
@@ -39,11 +37,15 @@
 </script>
 
 <!-- Ensure banner flushes against top by removing outer padding/margins -->
+   <!-- High Performance Ad -->
+  <div class="w-[300px] h-[300px] flex items-center justify-center mx-auto mt-2">
+    <Coinpoll />
+  </div>
 <div class="w-full m-0 p-0">
   <!-- Hero Banner Section -->
   <div class="relative w-full h-[450px] md:h-[600px] lg:h-[700px] overflow-hidden text-center">
     <img
-      src="https://cdn.susmanga.com/homepage/waifu-background.jpg?height=700&width=1200"
+      src="https://cdn.susmanga.com/homepage/waifu-background.jpg?height=700&width=100%"
       alt="Banner Background"
       class="absolute inset-0 w-full h-full object-cover z-0"
     />

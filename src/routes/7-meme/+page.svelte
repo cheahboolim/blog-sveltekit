@@ -18,14 +18,10 @@
   ];
 
   onMount(() => {
-    // Initialize base votes from server data
     const baseVotes = coins.map(c => (typeof c.votes === 'number' ? c.votes : 0));
-    
     try {
       const raw = sessionStorage.getItem(STORAGE_KEY);
       voted = raw ? JSON.parse(raw) : {};
-      
-      // Apply user's votes to the base counts (only once)
       votes = baseVotes.map((baseCount, idx) => {
         const coin = coins[idx];
         const delta = voted[coin.symbol];
@@ -33,7 +29,7 @@
       });
     } catch {
       voted = {};
-      votes = [...baseVotes]; // Fallback to base votes if sessionStorage fails
+      votes = [...baseVotes];
     }
   });
 
@@ -72,10 +68,8 @@
 
   function formatPrice(price: number) {
     if (!isFinite(price) || price <= 0) return '0';
-    
-    // For very small numbers, format with appropriate decimal places
     if (price < 0.000001) {
-      return price.toFixed(10).replace(/\.?0+$/, ''); // Remove trailing zeros
+      return price.toFixed(10).replace(/\.?0+$/, '');
     } else if (price < 0.01) {
       return price.toFixed(8).replace(/\.?0+$/, '');
     } else if (price < 1) {
@@ -95,7 +89,7 @@
   <div class="max-w-6xl mx-auto">
     <header class="mb-8 text-center">
       <h1 class="text-3xl sm:text-4xl font-extrabold">🔥 Top 7 Meme Coins - World's Largest Voting Poll</h1>
-      <p class="text-sm text-slate-400 mt-2">Voted by millions of SUSMANGA.COM readers daily. Collectively let's vote the coins we love to the top.</p>
+      <p class="text-sm text-slate-400 mt-2">Voted by millions of <a href="https://susmanga.com" class="text-blue-400 hover:underline">SUSMANGA.COM</a> readers daily. Collectively let's vote the coins we love to the top.</p>
     </header>
 
     {#if coins.length === 0}
@@ -112,7 +106,6 @@
                     <h2 class="text-xl font-semibold">{coin.rank}. {coin.name}</h2>
                     <div class="text-sm text-slate-400 uppercase">{coin.symbol}</div>
                   </div>
-
                 </div>
               </div>
             </div>
@@ -199,6 +192,21 @@
         {/each}
       </div>
     {/if}
+
+    <!-- Bitcoin Pizza & Community Message -->
+    <section class="mt-12 p-6 bg-[#0b0f12] rounded-2xl shadow-lg text-slate-300">
+      <h2 class="text-2xl font-bold mb-4 text-white">🍕 Bitcoin Pizza Day & Meme Coin Fun</h2>
+      <p class="mb-3">
+        Way back on <strong>May 22, 2010</strong>, Laszlo Hanyecz bought two Papa John's pizzas with <strong>10,000 bitcoins</strong>. 
+        Each Bitcoin was worth about <strong>$0.0041</strong> back then—so around $41 total. Today, those same coins would be worth over <strong>$1.1 billion</strong>! 😲
+      </p>
+      <p class="mb-3">
+        Here at <a href="https://susmanga.com" class="text-blue-400 hover:underline">SusManga.com</a>, we just poll the most popular cheap coins. While you’re enjoying your manga, you can see which coins our community loves—and maybe one day your small investment could grow big.
+      </p>
+      <p>
+        Think there’s a promising coin under $0.01 that should be on this list? Let us know over at <a href="https://susmanga.com" class="text-blue-400 hover:underline">SusManga.com</a>!
+      </p>
+    </section>
   </div>
 </main>
 
