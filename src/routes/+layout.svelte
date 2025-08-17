@@ -17,10 +17,18 @@
     </div>
   </header>
 
+<div class="flex justify-center my-4">
+  <AAdssmall />
+</div>
+
   <!-- Main Content -->
   <main class="flex-1 container mx-auto px-4 py-2">
     <slot />
   </main>
+
+<div class="flex justify-center my-4">
+  <AAdssmall />
+</div>
 
   <!-- Footer -->
   <footer class="bg-black border-t border-gray-800 mt-auto">
